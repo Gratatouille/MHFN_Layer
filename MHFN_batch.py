@@ -22,7 +22,7 @@ class ModernHopfieldNetwork:
         self.N_patterns = len(self.patterns)
         self.flat_patterns = [torch.flatten(self.patterns[i]) for i in range(len(self.patterns))]
         self.X = torch.stack(self.flat_patterns)
-        self.weights = (self.X.T @ self.X) / self.N_neurons
+        #self.weights = (self.X.T @ self.X) / self.N_neurons
         self.set_state(random=True)
         
         return
@@ -77,5 +77,5 @@ class MHFN_layer(torch.nn.Module, ModernHopfieldNetwork):
         self.patterns = [i.to(device) for i in self.patterns]
         self.flat_patterns = [i.to(device) for i in self.flat_patterns]
         self.X = self.X.to(device)
-        self.weights = self.weights.to(device)
+        #self.weights = self.weights.to(device)
         
